@@ -1,4 +1,3 @@
-import cv2
 from win32com.client import*
 
 def speak(text):
@@ -7,7 +6,5 @@ def speak(text):
     exit()
     
 speak("new person detected")
-
-cv2.waitKey(0)
 
 
