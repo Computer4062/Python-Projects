@@ -13,6 +13,18 @@ mnist = keras.datasets.mnist
 x_train = keras.utils.normalize(x_train)
 x_test = keras.utils.normalize(x_test)
 
+#model = keras.models.Sequnetial([
+#    keras.layers.Flatten(input_shape=(28,28))
+#    keras.layers.Dense(128, activation='relu')
+#    keras.layers.Dense(128, activation='relu')
+#    keras.layers.Dense(10, activation='softmax')
+#])
+
+#model.compile(optimizer='adam', loss='sparse_categorial_crossentropy', metrics=['accuracy'])
+#model.fit(x_train, y_train, epochs=3)
+
+#model.save("handwrittern_Digit_recognizer.model")
+
 win = Tk()
 win.title("AI number guesser")
 filename = ""
