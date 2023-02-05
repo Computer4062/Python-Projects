@@ -30,3 +30,6 @@ textbox = Entry(width=50)
 textbox.grid(row=1,column=2)
 btn1 = Button(text="Enter",command=buttonFunction)
 btn1.grid(row=1,column=3)
+
+if __name__ == "__main__":
+    win.mainloop()
