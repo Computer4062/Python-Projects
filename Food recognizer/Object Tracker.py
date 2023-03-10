@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+#
+
 device = torch.device('cpu')
 
 num_epochs = 15
