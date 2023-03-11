@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-#
-
 device = torch.device('cpu')
 
 num_epochs = 15
@@ -18,15 +16,15 @@ print('importing data files')
 
 transforms = torchvision.transforms.Compose([
     torchvision.transforms.ToTensor(),
-    torchvision.transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5)),
+    torchvision.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
     torchvision.transforms.RandomHorizontalFlip(),
-    torchvision.transforms.RandomCrop(size = 32)
+    torchvision.transforms.RandomCrop(size=32)
 ])
 
+train = torchvision.datasets.Food101('./data', download=True, split='train', transform=transforms)
+test = torchvision.datasets.Food101('./data', download=True, transform=transforms)
+train_dl = torch.utils.data.DataLoader(train, shuffle=True, batch_size=batch_size)
 
-train = torchvision.datasets.Food101('./data', download = True, split = 'train', transform = transforms)
-test = torchvision.datasets.Food101('./data', download = True, transform = transforms)
-train_dl = torch.utils.data.DataLoader(train, shuffle = True, batch_size = batch_size)
 
 def accuracy(net, data):
     images, labels = next(iter(data))
@@ -39,13 +37,14 @@ def accuracy(net, data):
 
     return acc.item()
 
+
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
 
         self.conv1 = nn.Conv2d(3, 6, 5)
         self.conv2 = nn.Conv2d(6, 16, 5)
-        self.pool = nn.MaxPool2d(2, stride = 2)
+        self.pool = nn.MaxPool2d(2, stride=2)
         self.fc1 = nn.Linear(16 * 5 * 5, 120)
         self.fc2 = nn.Linear(120, 101)
 
@@ -57,20 +56,25 @@ class Net(nn.Module):
 
         x = x.reshape(-1, 16 * 5 * 5)
         x = nn.functional.relu(self.fc1(x))
-        x = torch.log_softmax(self.fc2(x), dim = 1)
+        x = torch.log_softmax(self.fc2(x), dim=1)
 
         return x
 
+
 net = Net().to(device)
 loss = nn.NLLLoss()
-optimizer = torch.optim.SGD(net.parameters(), lr = 0.005)
 
 load = input('do you already have a model loaded: (y/n): ').lower()
 
 if load == 'n':
     print('Training starts')
+
+    epochs = int(input('Enter the amount of epochs you want to train the network with: '))
+    lr = int(input('Enter the learning rate which you want to train the network with: '))
+
+    optimizer = torch.optim.SGD(net.parameters(), lr=0.005)
     net.train()
-    for epoch in range(2):
+    for epoch in range(epochs):
         epoch_loss = 0
         for (id, data) in enumerate(train_dl):
             images, labels = data
@@ -95,9 +99,12 @@ if load == 'n':
         torch.save(net.state_dict(), name)
 
 else:
-    if os.path.exists('cnn.pth'):
+    path = input('Enter the location of the file: ')
+    if os.path.exists(path):
         net = Net().to(device)
         net.load_state_dict(torch.load('cnn.pth'))
+    else:
+        print('Module was not found')
 
 print("Computing model accuracy: ")
 
@@ -108,11 +115,12 @@ print(f'accuracy: {acc}')
 print('testing images in the data set')
 
 correct = 0
-state = ['bad', 'not okay', 'okay', 'good', 'excellent']
+state = ['bad increase the number of epochs', 'not okay', 'okay', 'good', 'excellent']
 
 for i in range(5):
     images, items = next(iter(train_dl))
     img = images[0]
+    l1 = items[0]
     img_np = img.numpy()  # 3,32,32
     img_np = np.transpose(img_np, (1, 2, 0))
     plt.imshow(img_np)
@@ -130,16 +138,17 @@ for i in range(5):
 
     img.reshape(1, 3, 32, 32)
 
-    with torch.no_grad(): prediction = net(img)
+    with torch.no_grad():
+        prediction = net(img)
 
     predicted = torch.argmax(prediction)
 
-    if items[0].item() == predicted.item():
+    if l1.item() == predicted.item():
         correct += 1
-        print(f"\n test correct")
+        print(f"\n test correct ✅")
     else:
         if items[0].item() != predicted.item():
-            print(f"\n test wrong, predicted {labels[predicted.item()]}")
+            print(f"\n test wrong, predicted {labels[predicted.item()]} ❌")
 
     plt.show()
 
