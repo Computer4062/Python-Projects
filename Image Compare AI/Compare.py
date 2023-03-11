@@ -15,6 +15,16 @@ transform = torchvision.transforms.Compose([
     torchvision.transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
 ])
 
+def text():
+    print('=======================================================')
+    print('                    IMAGE COMPARER                     ')
+    print('        compares images with the cifar 10 dataset      ')
+    print('Download the model from the ModelCreator.py before using')
+    print('                       the AI                          ')
+    print('   run python ModelCreator.py in the terminal or use a ')
+    print('          or use a code editor to run the file         ')
+    print('=======================================================')
+
 class Net(nn.Module):
     def __init__(self):
         super(Net, self).__init__()
@@ -42,7 +52,7 @@ class Net(nn.Module):
 
 
 def main():
-    print('Image comparer with cifar 10 dataset')
+    text()
 
     test = torchvision.datasets.CIFAR10('./first/data', download = True, train = False, transform = transform)
     test_dl = torch.utils.data.DataLoader(test, batch_size = 10, shuffle = True, num_workers = 2)

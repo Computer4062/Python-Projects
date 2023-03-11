@@ -7,6 +7,16 @@ transforms = torchvision.transforms.Compose([
     torchvision.transforms.Normalize((0.3, 0.3, 0.3), (0.3, 0.3, 0.3))
 ])
 
+def text():
+    print('=======================================================')
+    print('            IMAGE COMPARER MODEL DOWNLOAD              ')
+    print('    creates an AI model that compares images from the  ')
+    print('                   cifar 10 dataset                    ')
+    print('   run python Compare.py in the terminal or use a      ')
+    print('     or use a code editor to use the AI after          ')
+    print('                 running this programme                ')
+    print('=======================================================')
+
 
 class Net(nn.Module):
     def __init__(self):
@@ -46,6 +56,8 @@ def accuracy(net, data):
 
 
 def main():
+    text()
+    
     print('Image comparer model loader')
     print('5000 training images and 1000 testing images of raw data')
 
