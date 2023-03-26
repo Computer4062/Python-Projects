@@ -1,0 +1,37 @@
+{"intents": [
+  {
+    "tag": "greetings",
+    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
+    "response": ["hello", "hey", "what can I do for you?"]
+  },
+  {
+    "tag": "name",
+    "patterns": ["hello what is your name", "hey what is your name", "name please", "enter your name please", "what is your name"],
+    "response": ["my name is star chat", "star chat", "it is star chat"]
+  },
+  {
+    "tag": "producer",
+    "patterns": ["who is user producer", "who produced you", "who made you", "made by", "who has built you", "who created you"],
+    "response": ["Mihan", "Created by Mihan", "Made by Mihan"]
+  },
+  {
+    "tag": "age",
+    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
+    "response": ["hello", "hey", "what can I do for you?"]
+  },
+  {
+    "tag": "shop",
+    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
+    "response": ["hello", "hey", "what can I do for you?"]
+  },
+  {
+    "tag": "hours",
+    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
+    "response": ["hello", "hey", "what can I do for you?"]
+  },
+  {
+    "tag": "goodbye",
+    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
+    "response": ["hello", "hey", "what can I do for you?"]
+  }
+]}
