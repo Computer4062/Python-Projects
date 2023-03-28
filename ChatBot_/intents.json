@@ -1,12 +1,12 @@
 {"intents": [
   {
     "tag": "greetings",
-    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
+    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going", "hi", "hy"],
     "response": ["hello", "hey", "what can I do for you?"]
   },
   {
     "tag": "name",
-    "patterns": ["hello what is your name", "hey what is your name", "name please", "enter your name please", "what is your name"],
+    "patterns": ["hello what is your name", "hey what is your name", "name please", "enter your name please", "what is your name", "what should I call you", "call you"],
     "response": ["my name is star chat", "star chat", "it is star chat"]
   },
   {
@@ -16,22 +16,22 @@
   },
   {
     "tag": "age",
-    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
-    "response": ["hello", "hey", "what can I do for you?"]
+    "patterns": ["when were you created", "when", "which year are you made", "which year", "made year", "when were you made"],
+    "response": ["I was made in 27 / 03 / 2023", "I was made in 2023", "I was made in March 27th 2023"]
   },
   {
-    "tag": "shop",
-    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
-    "response": ["hello", "hey", "what can I do for you?"]
+    "tag": "who",
+    "patterns": ["you are a what", "what are you", "what are you made of", "made of what", "what", "what are you"],
+    "response": ["Iam an AI", "AI", "Iam a chat bot"]
   },
   {
     "tag": "hours",
-    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
-    "response": ["hello", "hey", "what can I do for you?"]
+    "patterns": ["hours in a day", "hours", "hour of the day", "hours a day could have", "How many hours does a day have?", "hours per day"],
+    "response": ["There are 24 hours in a day", "24 hours", "24 hours in the day on Earth"]
   },
   {
     "tag": "goodbye",
-    "patterns": ["hello", "hey", "good day", "greetings", "whats up?", "how is it going"],
-    "response": ["hello", "hey", "what can I do for you?"]
+    "patterns": ["I have to go now", "bye", "good bye", "cya", "see you later"],
+    "response": ["bye", "good bye", "cya", "see you later"]
   }
 ]}
