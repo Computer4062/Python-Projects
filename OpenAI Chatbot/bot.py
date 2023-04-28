@@ -18,7 +18,7 @@ while True:
 
         response = response['choices'][0]['message']['content']
 
-        print("ChatGPT: ")
+        print("Bot: ")
         for sentence in response.split('.'):
             print(sentence)
 
