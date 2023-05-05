@@ -1,20 +1,17 @@
-from win32com.client import*
-from tkinter import*
+from win32com.client import Dispatch
+from tkinter import Entry, Tk, Button
 
 root = Tk()
-a = ""
+root.title("Speaker")
 
-l1 = Label(text="Enter what you want to here")
-l1.pack()
+textbox = Entry(relief = "solid", width=30)
+textbox.grid(row = 0,column = 0)
 
-textbox = Entry(relief = "solid",bg = "powderblue",width=30)
-textbox.pack()
-
-def speak (text): 
+def speak (text):
 	speak = Dispatch("SAPI.Spvoice")
 	speak.Speak(text)
 
 b1 = Button (text="Speak",command = lambda:speak(textbox.get()))
-b1.pack()
+b1.grid(row = 0,column = 1)
 
 root.mainloop()
