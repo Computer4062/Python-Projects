@@ -39,7 +39,6 @@ while True:
         cv2.imshow("Camera", frame)
 
     if cv2.waitKey(30) == ord('a'):
-        cv2.destroyWindow(1)
         alarm_mode = not alarm_mode
 
     if cv2.waitKey(30) == ord('e'):
