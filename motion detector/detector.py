@@ -1,7 +1,6 @@
 import cv2
 import threading
 import winsound
-import time
 
 camera = cv2.VideoCapture(0)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -28,15 +27,18 @@ while True:
         _, threshold = cv2.threshold(difference, 25, 255, cv2.THRESH_BINARY)
         start_frame = frame_bw
 
-        if threshold.sum() > 300:
+        if threshold.sum() > 800:
             alarm = True
-            threading.Thread(target=beep).start()
-            alarm = False
 
         cv2.imshow("camera", threshold)
 
     else:
         cv2.imshow("Camera", frame)
+
+    if alarm and alarm_mode:
+        threading.Thread(target=beep).start()
+        alarm = False
+        print('Alarm')
 
     if cv2.waitKey(30) == ord('a'):
         alarm_mode = not alarm_mode
