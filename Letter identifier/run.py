@@ -15,4 +15,4 @@ plt.show()
 prediction = model.predict(selected_image)
 predicted = np.argmax(prediction)
 
-print(f">{alphabet[np.argmax(prediction)]}")
+print(f">{alphabet[predicted]}")
